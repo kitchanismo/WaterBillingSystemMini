@@ -60,8 +60,7 @@ namespace WaterBilingSystem
             lbAmount.Text = "Php. 0.00";
         }
 
-
-
+        //set data to an object base on classification
         private Classification SetClass(string classStr)
         {
             if (classStr == "residential")
@@ -86,6 +85,7 @@ namespace WaterBilingSystem
             }
         }
 
+        //return true if user input is valid else false
         private bool IsUserInputValid() 
         {
             Validate validate = new Validate();
