@@ -23,7 +23,7 @@ namespace WaterBilingSystem
 
         }
 
-        public bool isUserInputValid(string pres, string prev)
+        public bool isEmpty(string pres, string prev)
         {
 
             if (pres == "" || prev == "")

@@ -13,15 +13,14 @@ namespace WaterBilingSystem
     {
 
         //instantiate classes
-        BillingModel billing = new BillingModel();
+        Billing bill = new Billing();
         Validate validate = new Validate();
-        Settings set = new Settings();
+       
 
         public Main()
         {
             InitializeComponent();
-            set.SaveClassification();
-
+          
             //initialize keypress
             this.tbPrev.KeyPress += new System.Windows.Forms.KeyPressEventHandler(tb_Keypress);
             this.tbPres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(tb_Keypress);
@@ -36,27 +35,18 @@ namespace WaterBilingSystem
 
         private void btnCompute_Click(object sender, EventArgs e)
         {
-            //validate if user input empty
-            if (!validate.isUserInputValid(tbPres.Text, tbPrev.Text))
-            {
-                MessageBox.Show("Missing input/s");
-                return;
-            }
-            
-            //initialize previous and present reading
-            var presRead = Double.Parse(tbPres.Text);
-            var prevRead = Double.Parse(tbPrev.Text);
 
-            //validate reading
-            if (!validate.isPrevReadingValid(presRead, prevRead))
-            {
-                MessageBox.Show("Present Reading is less than Previous Reading");
-                return;
-            }
+           if (!IsUserInputValid()) 
+           {
+               return;
+           }
+
+            //get data what to pass in class
+            var dataClass = SetClass(cboClass.Text.ToLower());
 
             //get the volume reading and amount due
-            var volumeRead = billing.getVolumeRead(presRead, prevRead);
-            var amountDue = billing.getAmountDue(cboClass.Text, volumeRead);
+            var volumeRead = bill.getVolumeRead(dataClass);
+            var amountDue = bill.getAmountDue(volumeRead, dataClass);
 
             //displaying outputs
             lbvRead.Text = volumeRead.ToString();
@@ -71,11 +61,53 @@ namespace WaterBilingSystem
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private Classification SetClass(string classStr)
         {
-         
-            set.ShowDialog();
+            if (classStr == "residential")
+            {
+                Residential res = new Residential();
+                res.prev = Double.Parse(tbPrev.Text);
+                res.pres = Double.Parse(tbPres.Text);
+                res.days = Int32.Parse(tbRdays.Text);
+                res.addedPrice = Int32.Parse(tbRadded.Text);
+                res.price = Int32.Parse(tbRprice.Text);
+                return res;
+            }
+            else
+            {
+                Commercial com = new Commercial();
+                com.prev = Double.Parse(tbPrev.Text);
+                com.pres = Double.Parse(tbPres.Text);
+                com.days = Int32.Parse(tbCdays.Text);
+                com.addedPrice = Int32.Parse(tbCadded.Text);
+                com.price = Int32.Parse(tbCprice.Text);
+                return com;
+            }
         }
 
+        private bool IsUserInputValid() 
+        {
+            Validate validate = new Validate();
+
+            //initialize previous and present reading
+            var presRead = Double.Parse(tbPres.Text);
+            var prevRead = Double.Parse(tbPrev.Text);
+
+            if (!validate.isEmpty(tbPres.Text, tbPrev.Text))
+            {
+                MessageBox.Show("Missing input/s");
+                return false;
+            }
+            else if (!validate.isPrevReadingValid(presRead, prevRead))
+            {
+                MessageBox.Show("Present Reading is less than Previous Reading");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

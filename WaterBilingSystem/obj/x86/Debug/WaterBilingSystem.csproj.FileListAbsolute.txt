@@ -1,0 +1,7 @@
+C:\Users\Betsayda\Desktop\Reservation\WaterBilingSystem\WaterBilingSystem\obj\x86\Debug\WaterBilingSystem.Main.resources
+C:\Users\Betsayda\Desktop\Reservation\WaterBilingSystem\WaterBilingSystem\obj\x86\Debug\WaterBilingSystem.Properties.Resources.resources
+C:\Users\Betsayda\Desktop\Reservation\WaterBilingSystem\WaterBilingSystem\obj\x86\Debug\WaterBilingSystem.csproj.GenerateResource.Cache
+C:\Users\Betsayda\Desktop\Reservation\WaterBilingSystem\WaterBilingSystem\bin\Debug\WaterBilingSystem.exe
+C:\Users\Betsayda\Desktop\Reservation\WaterBilingSystem\WaterBilingSystem\bin\Debug\WaterBilingSystem.pdb
+C:\Users\Betsayda\Desktop\Reservation\WaterBilingSystem\WaterBilingSystem\obj\x86\Debug\WaterBilingSystem.exe
+C:\Users\Betsayda\Desktop\Reservation\WaterBilingSystem\WaterBilingSystem\obj\x86\Debug\WaterBilingSystem.pdb
