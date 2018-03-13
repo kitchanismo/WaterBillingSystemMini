@@ -35,11 +35,11 @@ namespace WaterBilingSystem
 
         private void btnCompute_Click(object sender, EventArgs e)
         {
-
-           if (!IsUserInputValid()) 
-           {
-               return;
-           }
+            //simple return if not valid
+            if (!IsUserInputValid()) 
+            {
+                return;
+            }
 
             //get data what to pass in class
             var dataClass = SetClass(cboClass.Text.ToLower());
