@@ -63,26 +63,30 @@ namespace WaterBilingSystem
         //set data to an object base on classification
         private Classification SetClass(string classStr)
         {
-            if (classStr == "residential")
+
+            switch (classStr)
             {
-                Residential res = new Residential();
-                res.prev = Double.Parse(tbPrev.Text);
-                res.pres = Double.Parse(tbPres.Text);
-                res.days = Int32.Parse(tbRdays.Text);
-                res.addedPrice = Int32.Parse(tbRadded.Text);
-                res.price = Int32.Parse(tbRprice.Text);
-                return res;
+                case "residential":
+                    Residential res = new Residential();
+                    res.prev = Double.Parse(tbPrev.Text);
+                    res.pres = Double.Parse(tbPres.Text);
+                    res.days = Int32.Parse(tbRdays.Text);
+                    res.addedPrice = Int32.Parse(tbRadded.Text);
+                    res.price = Int32.Parse(tbRprice.Text);
+                    return res;
+                case "commercial":
+                    Commercial com = new Commercial();
+                    com.prev = Double.Parse(tbPrev.Text);
+                    com.pres = Double.Parse(tbPres.Text);
+                    com.days = Int32.Parse(tbCdays.Text);
+                    com.addedPrice = Int32.Parse(tbCadded.Text);
+                    com.price = Int32.Parse(tbCprice.Text);
+                    return com;
+                default:
+                    MessageBox.Show(classStr + " Not implemeted yet");
+                    return new Classification();
             }
-            else
-            {
-                Commercial com = new Commercial();
-                com.prev = Double.Parse(tbPrev.Text);
-                com.pres = Double.Parse(tbPres.Text);
-                com.days = Int32.Parse(tbCdays.Text);
-                com.addedPrice = Int32.Parse(tbCadded.Text);
-                com.price = Int32.Parse(tbCprice.Text);
-                return com;
-            }
+          
         }
 
         //return true if user input is valid else false
