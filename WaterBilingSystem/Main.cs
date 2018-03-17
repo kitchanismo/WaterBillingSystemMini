@@ -16,7 +16,6 @@ namespace WaterBilingSystem
         Billing bill = new Billing();
         Validate validate = new Validate();
        
-
         public Main()
         {
             InitializeComponent();
@@ -41,11 +40,11 @@ namespace WaterBilingSystem
                 return;
             }
 
-            //get data what to pass in class
+            //get data what to pass in classification
             var dataClass = SetClass(cboClass.Text.ToLower());
 
             //get the volume reading and amount due
-            var volumeRead = bill.getVolumeRead(dataClass);
+            var volumeRead = bill.getVolumeRead(dataClass.prev, dataClass.pres);
             var amountDue = bill.getAmountDue(volumeRead, dataClass);
 
             //displaying outputs

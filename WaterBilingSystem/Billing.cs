@@ -12,9 +12,9 @@ namespace WaterBilingSystem
         private double amountDue { get; set; }
 
         //get the volume reading by passing present and previous parameters
-        public double getVolumeRead(IClassification _class)
+        public double getVolumeRead(double prev, double pres)
         {
-            return _class.pres - _class.prev;
+            return pres - prev;
         }
 
         //get the Amount Due by passing Volume Read parameters
